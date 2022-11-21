@@ -1,0 +1,43 @@
+.listHotel_container{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.listHotel_wrapper{
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    gap: 20px;
+}
+.listHotel_Search{
+    flex: 1;
+    background-color: #febb02;
+    padding: 10px;
+    border-radius: 10px;
+    position: sticky;
+    top: 10px;
+    height: max-content;
+}
+.listHotel_Result{
+    flex: 3;
+}
+.ls_title{
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 10px;
+}
+.ls_Item{
+
+}
+.ls_Item input{
+    height: 30px;
+    border: none;
+    padding: 5px;
+    width: 100%;
+    outline: none;
+}
+.ls_Item label{
+    font-size: 16px;
+    display: block;
+    padding:5px 0;
+}
