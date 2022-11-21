@@ -24,6 +24,11 @@ function Header(){
       const handleOpenDate=()=>{
         setOpenDate(!opendate)
       }
+      const handleOption=(name,operation)=>{
+         setOption(prev=>({
+            ...prev
+         }))
+      }
 
     return(
         <div className="header">
@@ -83,9 +88,48 @@ function Header(){
                     <div className='header_searchItem'>
                        <FontAwesomeIcon icon={faPerson} className="header_icon"/>
                        <span className='header_searchText'>
-                        {option.adult} adult 
-                        {option.children} children 
-                        {option.room} room</span>
+                        {option.adult} Adul   
+                        . {option.children} children
+                        . {option.room} room
+                        </span>
+                        <div className='header_options'>
+                            <div className='option_Item'>
+                                <span className="option_text">Adul</span>
+                                <div className='option_counter'>
+                                    <button className='optionCounterBtn'
+                                    onClick={()=>{handleOption("adul","decrease")}}
+                                    >-</button>
+                                    <span className='option_Numer'>1</span>
+                                    <button className='optionCounterBtn'
+                                    onClick={()=>{handleOption("adul","increase")}}
+                                    >+</button>
+                                </div>
+                            </div>
+                            <div className='option_Item'>
+                                <span className="option_text">children</span>
+                                <div className='option_counter'>
+                                    <button className='optionCounterBtn'
+                                    onClick={()=>{handleOption("children","decrease")}}
+                                    >-</button>
+                                    <span className='option_Numer'>1</span>
+                                    <button className='optionCounterBtn'
+                                    onClick={()=>{handleOption("children","increase")}}
+                                    >+</button>
+                                </div>
+                            </div>
+                            <div className='option_Item'>
+                                <span className="option_text">Room</span>
+                                <div className='option_counter'>
+                                    <button className='optionCounterBtn'
+                                    onClick={()=>{handleOption("room","decrease")}}
+                                    >-</button>
+                                    <span className='option_Numer'>1</span>
+                                    <button className='optionCounterBtn'
+                                    onClick={()=>{handleOption("room","increase")}}
+                                    >+</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div className='header_searchItem'>
                        <button className='headerBtn'>Search</button>
