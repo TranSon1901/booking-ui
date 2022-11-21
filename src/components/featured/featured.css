@@ -4,12 +4,14 @@
    display: flex;
    justify-content: space-between;
    gap: 20px;
+   z-index: 1;
 }
 .featured_Item{
    position: relative;
    color: white;
    border-radius: 10px;
    overflow: hidden;
+   height: 250px;
 }
 .featured_Item img{
     width: 100%;
@@ -17,5 +19,6 @@
 }
 .featured_title{
     position: absolute;
+    bottom: 0;
   
 }
