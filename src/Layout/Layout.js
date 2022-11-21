@@ -6,10 +6,7 @@ import Router from "../routes/Routers"
 function Layout(){
     return(
       <>
-        <NavBar />
-        <Header />
         <Router />
-        <Footer />
       </>
     )
 }

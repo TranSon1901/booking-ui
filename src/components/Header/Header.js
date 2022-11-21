@@ -6,7 +6,7 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns'
 import { useState } from 'react';
-function Header(){
+function Header({type}){
     const [opendate,setOpenDate]=useState(false)
     const [date, setDate] = useState([
         {
@@ -18,7 +18,7 @@ function Header(){
       const [openOption,setOpenOption]=useState(false)
       const [option,setOption]=useState({
         adult:1,
-        children:1,
+        children:0,
         room:1
       })
       const handleOpenDate=()=>{
@@ -37,7 +37,7 @@ function Header(){
       }
     return(
         <div className="header">
-            <div className='header_container'>
+            <div className={type==='listHotel'? "header_container listMode":"header_container"}>
                 <div className="header_list">
                      <div className="header_listItem active">
                          <FontAwesomeIcon icon={faBed} />
@@ -60,6 +60,8 @@ function Header(){
                          <span>Aiport taxis</span>
                      </div>
                 </div>
+                {type !=='listHotel' && 
+                <>
                 <h1 className='header_title'>  A lifetime of discounts? It's Genius.</h1>
                 <p className="header_desc">Get rewarded for your travels – unlock instant savings of 10% or
                  more with a free Lamabooking account
@@ -115,7 +117,7 @@ function Header(){
                             <div className='option_Item'>
                                 <span className="option_text">Children</span>
                                 <div className='option_counter'>
-                                    <button disabled={option.children <=1}
+                                    <button disabled={option.children <=0}
                                     className='optionCounterBtn'
                                     onClick={()=>{handleOption("children","decrease")}}
                                     >-</button>
@@ -145,6 +147,7 @@ function Header(){
                        <button className='headerBtn'>Search</button>
                     </div>    
                 </div>
+                </>}
             </div>
         </div>
     )

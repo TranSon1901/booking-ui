@@ -1,6 +1,12 @@
+import Header from "../../components/Header/Header"
+import NavBar from "../../components/navbar/Navbar"
+
 function ListHotel(){
     return(
-        <h1>ListHotel page</h1>
+      <div>
+        <NavBar />
+        <Header type="listHotel"/>
+      </div>
     )
 }
 export default ListHotel
