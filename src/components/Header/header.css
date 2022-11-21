@@ -107,6 +107,6 @@
     cursor: pointer;
     background-color: white;
 }
-.option_Numer{
-
+.optionCounterBtn:disabled{
+    cursor: not-allowed;
 }
