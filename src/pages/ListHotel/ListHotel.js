@@ -80,6 +80,9 @@ function ListHotel(){
                 </div>
                 <div className="listHotel_Result">
                     <SearchItem />
+                    <SearchItem />
+                    <SearchItem />
+                    <SearchItem />
                 </div>
             </div>
         </div>

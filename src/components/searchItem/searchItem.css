@@ -14,6 +14,7 @@
 }
 .search_Item_Desc{
    display: flex;
+   flex: 2;
    flex-direction: column;
    gap: 10px;
 }
@@ -45,24 +46,50 @@
     font-weight: bold;
 }
 .search_Item_CancelOpSubtitle{
-
+    font-size: 12px;
+    color: #008009;
 }
 
 .search_Item_Details{
-
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between
 }
 .search_Item_Rating{
-
+    display: flex;
+    justify-content: space-between
+}
+.search_Item_Rating button{
+    background-color: #003580;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    border: none;
+}
+.search_Item_Rating span{
+    font-weight: 500;
 }
 .search_Item_DetailTexts{
-
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: right;
 }
 .search_Item_Price{
-
+    font-size: 24px;
 }
 .search_Item_TaxOp{
-
+    font-size: 12px;
+    color: gray;
 }
 .search_Item_CheckButton{
-
+    background-color: #0071c2;
+    color: white;
+    font-weight: bold;
+    padding: 10px 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
 }
