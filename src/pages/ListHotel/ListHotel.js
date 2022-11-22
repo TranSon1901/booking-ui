@@ -5,6 +5,7 @@ import { useState } from "react"
 import { format } from 'date-fns'
 import { DateRange } from 'react-date-range';
 import './listhotel.css'
+import SearchItem from "../../components/searchItem/SearchItem"
 
 function ListHotel(){
     const localtion=useLocation()
@@ -78,7 +79,7 @@ function ListHotel(){
                     <button className="listHotel_Search_btn">Search</button>
                 </div>
                 <div className="listHotel_Result">
-                
+                    <SearchItem />
                 </div>
             </div>
         </div>
