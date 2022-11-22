@@ -6,7 +6,7 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns'
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function Header({type}){
     const [destination,setDestinaton]=useState("")
     const [opendate,setOpenDate]=useState(false)
@@ -38,17 +38,17 @@ function Header({type}){
         setOpenDate(false)
       }
       const navigate = useNavigate();
-      const hanldeSearch = () =>{
+      const hanldeSearch=() =>{
         navigate("/booking-ui/hotels", { state: { destination, date, option } })
       }
     return(
         <div className="header">
             <div className={type==='listHotel'? "header_container listMode":"header_container"}>
                 <div className="header_list">
-                     <div className="header_listItem active">
+                     <Link to="/booking-ui/hotels" className="header_listItem active">
                          <FontAwesomeIcon icon={faBed} />
                          <span>Stays</span>
-                     </div>
+                     </Link>
                      <div className="header_listItem">
                          <FontAwesomeIcon icon={faPlane} />
                          <span>Flights</span>
@@ -151,7 +151,9 @@ function Header({type}){
                         }
                     </div>
                     <div className='header_searchItem'>
-                       <button className='headerBtn'>Search</button>
+                       <button 
+                       onClick={hanldeSearch}
+                       className='headerBtn'>Search</button>
                     </div>    
                 </div>
                 </>}

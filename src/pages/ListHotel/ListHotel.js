@@ -1,7 +1,10 @@
+import { useLocation } from "react-router-dom"
 import Header from "../../components/Header/Header"
 import NavBar from "../../components/navbar/Navbar"
 import './listhotel.css'
 function ListHotel(){
+    const localtion=useLocation()
+    console.log(localtion)
     return(
       <div>
         <NavBar />
