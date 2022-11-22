@@ -1,10 +1,26 @@
 import Header from "../../components/Header/Header"
 import NavBar from "../../components/navbar/Navbar"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faLocationDot, faCircleArrowLeft, faCircleArrowRight,  faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import './hotel.css'
+import { useState } from "react"
 function Hotel(){
-
+    const [sliderNumber,setSliderNumber]=useState()
+    const [open,setOpen]=useState()
+    const handleOpen=(i)=>{
+        setSliderNumber(i)
+        setOpen(true)
+    }
+    const handleMove = (direction) => {
+        let newSliderNumber;
+    
+        if (direction === "l") {
+          newSliderNumber = sliderNumber === 0 ? 5 : sliderNumber - 1;
+        } else {
+          newSliderNumber = sliderNumber === 5 ? 0 : sliderNumber + 1;
+        }
+        setSliderNumber(newSliderNumber)
+      };
     const photos = [
         {
           src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707778.jpg?k=56ba0babbcbbfeb3d3e911728831dcbc390ed2cb16c51d88159f82bf751d04c6&o=&hp=1",
@@ -30,7 +46,29 @@ function Hotel(){
           <NavBar />
           <Header type="listHotel"/>
           <div className="hotel_container">
+            {open && 
+            <div className="slider">
+            <FontAwesomeIcon
+              icon={faCircleXmark}
+              className="close"
+              onClick={()=>setOpen(!open)}
+            />
+            <FontAwesomeIcon
+              icon={faCircleArrowLeft}
+              className="arrow"
+              onClick={()=>handleMove("l")}
+            />
+             <div className="sliderWrapper">
+              <img src={photos[sliderNumber].src} alt="" />
+            </div>
+            <FontAwesomeIcon
+              icon={faCircleArrowRight}
+              className="arrow"
+              onClick={()=>handleMove("r")}
+            />
+            </div>}
                <div className="hotel_wrapper">
+                    <button className="bookNow">Reserve or Book Now!</button>
                     <h1 className="hotel_title">Grand Hotel</h1>
                     <div className="hotel_address">
                         <FontAwesomeIcon icon={faLocationDot}/>
@@ -44,9 +82,9 @@ function Hotel(){
                     </span>
                     <div className="hotel_image">
                         {
-                            photos.map((photo,index)=>(
-                                <div className="photo_image_wrapper">
-                                     <img src={photo.src}/>
+                            photos.map((photo,i)=>(
+                                <div key={i} className="photo_image_wrapper">
+                                     <img src={photo.src} onClick={()=>handleOpen(i)}/>
                                 </div>
                             ))
                         }
