@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/booking-ui/static/css/main.8237a67d.css",
-    "main.js": "/booking-ui/static/js/main.32d651d9.js",
+    "main.css": "/booking-ui/static/css/main.b1bfeffc.css",
+    "main.js": "/booking-ui/static/js/main.c12663b5.js",
     "static/js/787.22cf53f4.chunk.js": "/booking-ui/static/js/787.22cf53f4.chunk.js",
     "index.html": "/booking-ui/index.html",
-    "main.8237a67d.css.map": "/booking-ui/static/css/main.8237a67d.css.map",
-    "main.32d651d9.js.map": "/booking-ui/static/js/main.32d651d9.js.map",
+    "main.b1bfeffc.css.map": "/booking-ui/static/css/main.b1bfeffc.css.map",
+    "main.c12663b5.js.map": "/booking-ui/static/js/main.c12663b5.js.map",
     "787.22cf53f4.chunk.js.map": "/booking-ui/static/js/787.22cf53f4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8237a67d.css",
-    "static/js/main.32d651d9.js"
+    "static/css/main.b1bfeffc.css",
+    "static/js/main.c12663b5.js"
   ]
 }
