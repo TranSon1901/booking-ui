@@ -6,9 +6,9 @@ import ListHotel from '../pages/ListHotel/ListHotel'
 const Router=()=>{
     return(
        <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='/hotels' element={<ListHotel />}/>
-          <Route path='/hotels/:id' element={<Hotel />}/>
+          <Route path='/booking-ui/' element={<Home />}/>
+          <Route path='/booking-ui/hotels' element={<ListHotel />}/>
+          <Route path='/booking-ui/hotels/:id' element={<Hotel />}/>
        </Routes>
     )
 }
