@@ -6,7 +6,7 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns'
 import { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function Header({type}){
     const [destination,setDestinaton]=useState("")
     const [opendate,setOpenDate]=useState(false)
@@ -45,10 +45,10 @@ function Header({type}){
         <div className="header">
             <div className={type==='listHotel'? "header_container listMode":"header_container"}>
                 <div className="header_list">
-                     <Link to="/booking-ui/hotels" className="header_listItem active">
+                     <div className="header_listItem active">
                          <FontAwesomeIcon icon={faBed} />
                          <span>Stays</span>
-                     </Link>
+                     </div>
                      <div className="header_listItem">
                          <FontAwesomeIcon icon={faPlane} />
                          <span>Flights</span>
@@ -92,9 +92,10 @@ function Header({type}){
                       {opendate &&
                        <DateRange
                         editableDateInputs={true}
-                         onChange={item => setDate([item.selection])}
-                         moveRangeOnFirstSelection={false}
-                         ranges={date}
+                        minDate={new Date()}
+                        ranges={date}
+                        onChange={item => setDate([item.selection])}
+                        moveRangeOnFirstSelection={false}
                         className="date"
                        />
                       }
