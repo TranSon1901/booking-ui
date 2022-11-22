@@ -75,7 +75,7 @@ function ListHotel(){
                             placeholder={option.room}/>
                         </div>
                     </div>
-                    <button>Search</button>
+                    <button className="listHotel_Search_btn">Search</button>
                 </div>
                 <div className="listHotel_Result">
                 
