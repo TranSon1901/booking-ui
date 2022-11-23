@@ -2,6 +2,7 @@
   "name": "booking",
   "version": "0.1.0",
   "private": true,
+  "proxy":"http://localhost:3002",
   "homepage": "https://TranSon1901.github.io/booking-ui/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
@@ -11,6 +12,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.2.0",
     "date-fns": "^2.29.3",
     "react": "^18.2.0",
     "react-date-range": "^1.4.0",
@@ -25,7 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy":"gh-pages -d build"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
