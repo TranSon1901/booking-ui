@@ -20,6 +20,7 @@
 }
 .plist_title h2{
     font-size: 18px;
+    text-transform: capitalize;
 }
 .plist_title h3{
     font-size: 14px;
