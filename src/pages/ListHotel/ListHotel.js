@@ -16,13 +16,11 @@ function ListHotel(){
     const [min,setMin]=useState(undefined)
     const [max,setMax]=useState(undefined)
 
-    
+    console.log(localtion)
     const {data, loading, erorr ,reFetch} = 
        UseFetch(`/api/hotels?city=${destination}&min=${min||0}&max=${max||999}`)
-    console.log(data)
 
     const hanldeSearch=()=>{
-        console.log(1)
         reFetch()
     }
     return(
