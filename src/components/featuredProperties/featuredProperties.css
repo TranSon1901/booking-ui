@@ -10,13 +10,13 @@
     gap: 10px;
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
     overflow: hidden;
 }
 .fp_Item img{
     width: 100%;
     height: 250px;
     object-fit: cover;
+    border-radius: 10px;
 }
 .fp_Name{
     color: #333;

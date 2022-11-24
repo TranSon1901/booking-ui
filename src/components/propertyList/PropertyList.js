@@ -13,7 +13,7 @@ function PropertyList(){
     return(
         <div className='plist'>
             {
-               loading ? ('loading'):
+               loading ? ('loading please await'):
             (<>
             {data && 
                data.map((data,i)=>(

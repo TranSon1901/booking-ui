@@ -1,17 +1,18 @@
 import './searchItem.css'
-function SearchItem(){
+import {Link} from 'react-router-dom'
+function SearchItem({item}){
     return(
     <div className="search_Item">
-       <img src="https://cf.bstatic.com/xdata/images/hotel/square600/261707778.webp?k=fa6b6128468ec15e81f7d076b6f2473fa3a80c255582f155cae35f9edbffdd78&o=&s=1" />
+       <img src={item.photos[0]} />
        <div className="search_Item_Desc">
-           <h1 className="search_Item_Title">Tower Street Apartments</h1>
-           <span className="search_Item_Distance">500m from center</span>
+           <h1 className="search_Item_Title">{item.name}</h1>
+           <span className="search_Item_Distance">{item.distance}</span>
            <span className="search_Item_TaxiOp">Free airport taxi</span>
            <span className="search_Item_Subtitle">
                Studio Apartment with Air conditioning
            </span>
             <span className="search_Item_Features">
-            Entire studio • 1 bathroom • 21m² 1 full bed
+            {item.desc}
             </span>
             <span className="search_Item_CancelOp">Free cancellation </span>
             <span className="search_Item_CancelOpSubtitle">
@@ -24,9 +25,11 @@ function SearchItem(){
             <button>8.9</button>
          </div>
         <div className="search_Item_DetailTexts">
-          <span className="search_Item_Price">$112</span>
+          <span className="search_Item_Price">{item.cheapestPrice}</span>
           <span className="search_Item_TaxOp">Includes taxes and fees</span>
-          <button className="search_Item_CheckButton">See availability</button>
+          <Link to={`/booking-ui/hotels/${item._id}`}>
+              <button className="search_Item_CheckButton">See availability</button>   
+          </Link>
         </div>
       </div>
     </div>

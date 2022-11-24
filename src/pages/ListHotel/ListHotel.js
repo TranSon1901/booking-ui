@@ -6,13 +6,25 @@ import { format } from 'date-fns'
 import { DateRange } from 'react-date-range';
 import './listhotel.css'
 import SearchItem from "../../components/searchItem/SearchItem"
-
+import UseFetch from "../../hooks/UseFetch"
 function ListHotel(){
     const localtion=useLocation()
     const [openDate,setOpenDate]=useState(false)
     const [destination,setDestinaton]=useState(localtion.state.destination)
     const [date, setDate] = useState(localtion.state.date)
     const [option,setOption]=useState(localtion.state.option)
+    const [min,setMin]=useState(undefined)
+    const [max,setMax]=useState(undefined)
+
+    
+    const {data, loading, erorr ,reFetch} = 
+       UseFetch(`/api/hotels?city=${destination}&min=${min||0}&max=${max||999}`)
+    console.log(data)
+
+    const hanldeSearch=()=>{
+        console.log(1)
+        reFetch()
+    }
     return(
       <div>
         <NavBar />
@@ -46,13 +58,17 @@ function ListHotel(){
                             <span className="ls_options_text">
                                 Min price <small>per night</small>
                             </span>
-                            <input type="number" className="ls_option_input"/>
+                            <input type="number" 
+                            className="ls_option_input" 
+                            onChange={e=>setMin(e.target.value)}/>
                         </div>
                         <div className="ls_options_item">
                             <span className="ls_options_text">
                                 Max price <small>per night</small>
                             </span>
-                            <input type="number" className="ls_option_input"/>
+                            <input type="number"
+                            className="ls_option_input" 
+                            onChange={e=>setMax(e.target.value)}/>
                         </div>
                         <div className="ls_options_item">
                             <span className="ls_options_text">
@@ -76,13 +92,12 @@ function ListHotel(){
                             placeholder={option.room}/>
                         </div>
                     </div>
-                    <button className="listHotel_Search_btn">Search</button>
+                    <button onClick={hanldeSearch} className="listHotel_Search_btn">Search</button>
                 </div>
                 <div className="listHotel_Result">
-                    <SearchItem />
-                    <SearchItem />
-                    <SearchItem />
-                    <SearchItem />
+                   { loading ? ('loading await please'):
+                     data.map(item=>(<SearchItem item={item} key={item._id}/>))
+                   }
                 </div>
             </div>
         </div>
