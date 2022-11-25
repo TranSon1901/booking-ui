@@ -5,8 +5,9 @@ import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { SearchContext } from '../../context/SearchContext';
 function Header({type}){
     const [destination,setDestinaton]=useState("")
     const [opendate,setOpenDate]=useState(false)
@@ -37,8 +38,11 @@ function Header({type}){
         setOpenOption(!openOption)
         setOpenDate(false)
       }
+      const {dispatch} = useContext(SearchContext)
+    
       const navigate = useNavigate();
       const hanldeSearch=() =>{
+        dispatch({type:"NEW_SEARCH",payload:{destination,date,option}})
         navigate("/booking-ui/hotels", { state: { destination, date, option } })
       }
     return(

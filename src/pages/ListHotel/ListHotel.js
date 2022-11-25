@@ -7,6 +7,7 @@ import { DateRange } from 'react-date-range';
 import './listhotel.css'
 import SearchItem from "../../components/searchItem/SearchItem"
 import UseFetch from "../../hooks/UseFetch"
+
 function ListHotel(){
     const localtion=useLocation()
     const [openDate,setOpenDate]=useState(false)
@@ -16,7 +17,6 @@ function ListHotel(){
     const [min,setMin]=useState(undefined)
     const [max,setMax]=useState(undefined)
 
-    console.log(localtion)
     const {data, loading, erorr ,reFetch} = 
        UseFetch(`/api/hotels?city=${destination}&min=${min||0}&max=${max||999}`)
 

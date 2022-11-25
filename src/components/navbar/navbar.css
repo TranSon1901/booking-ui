@@ -12,6 +12,10 @@
     align-items: center;
     justify-content: space-between;
 }
+.navContainer a{
+    text-decoration: none;
+    color: white;
+}
 .logo{
     font-weight: 500;
 }
