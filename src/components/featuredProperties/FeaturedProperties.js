@@ -1,7 +1,7 @@
 import './featuredProperties.css'
 import UseFetch from '../../hooks/UseFetch'
 function FeaturedProperties(){
-   const {data,loading, erorr} = UseFetch("/api/hotels?featured=true&limit=4") 
+   const {data,loading, erorr} = UseFetch("/hotels?featured=true&limit=4") 
    return(
       <div className='fp'>
          {loading ? ('loading please await'):

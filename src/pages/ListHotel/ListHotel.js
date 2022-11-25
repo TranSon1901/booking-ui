@@ -18,7 +18,7 @@ function ListHotel(){
     const [max,setMax]=useState(undefined)
 
     const {data, loading, erorr ,reFetch} = 
-       UseFetch(`/api/hotels?city=${destination}&min=${min||0}&max=${max||999}`)
+       UseFetch(`/hotels?city=${destination}&min=${min||0}&max=${max||999}`)
 
     const hanldeSearch=()=>{
         reFetch()

@@ -16,7 +16,7 @@ function Hotel(){
     const [open,setOpen]=useState()
     
     const {data, loading, erorr ,reFetch} = 
-       UseFetch(`/api/hotels/find/${id}`)
+       UseFetch(`/hotels/find/${id}`)
     const handleOpen=(i)=>{
        console.log(i)
         setSliderNumber(i)

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import UseFetch from '../../hooks/UseFetch'
 import './featured.css'
 function Featured(){
-     const {data,loading,erorr} = UseFetch("/api/hotels/countByCity?cities=berlin,madrid,london")
+     const {data,loading,erorr} = UseFetch("/hotels/countByCity?cities=berlin,madrid,london")
      return(
        <div className='featured'>
           { loading ? "loading please await":(<>  

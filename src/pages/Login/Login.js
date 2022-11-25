@@ -1,5 +1,6 @@
 import { useContext ,useState} from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from "react-router-dom";
 import './login.css'
 import axios from 'axios'
 function Login(){
@@ -14,32 +15,35 @@ function Login(){
             [e.target.id]:e.target.value
         }))
       }
+
+      const navigate = useNavigate()
+
       const handleClick= async (e) =>{
-        console.log("run")
         e.preventDefault();
         dispatch({type:"LOGIN_START"})
         try{
-            const res = await axios.post("/api/auth/login", credentials);
+            const res = await axios.post("/auth/login", credentials);
             dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+            navigate("/booking-ui/")
         }catch(err){
             dispatch({type:"LOGIN_FAILURE", payload:err.response.data})
         }
       }
-      console.log(user)
     return(
       <div className='login'>
           <div className='login_container'>
                <input type="text" 
-               onChange={()=>handleChange}
+               onChange={handleChange}
                placeholder='username' 
                id='username' 
                className='Login_input'/>
                <input type="password" 
-               onChange={()=>handleChange}
+               onChange={handleChange}
                placeholder='password' 
                id='password' 
                className='Login_input'/>
-               <button onClick={handleClick} className='login_btn'>Login</button>
+               <button disabled={loading}
+               onClick={handleClick} className='login_btn'>Login</button>
                {error && <span>{error.message}</span>}
           </div>
       </div>
