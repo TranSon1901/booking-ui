@@ -1,0 +1,42 @@
+.reserve{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.418);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}  
+.reserve_container{
+    background-color: white;
+    padding: 20px;
+    position: relative;
+}
+.reserve_Close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+.reserve_item{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
+}
+.reserve_item_info{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.reserve_title{
+    font-weight: 500;
+}
+.reserve_des{
+    font-weight: 500;
+}
+.reserve_max{
+    font-size: 12px;
+}

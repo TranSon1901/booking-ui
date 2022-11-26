@@ -16,7 +16,7 @@ function ListHotel(){
     const [option,setOption]=useState(localtion.state.option)
     const [min,setMin]=useState(undefined)
     const [max,setMax]=useState(undefined)
-
+     
     const {data, loading, erorr ,reFetch} = 
        UseFetch(`/hotels?city=${destination}&min=${min||0}&max=${max||999}`)
 

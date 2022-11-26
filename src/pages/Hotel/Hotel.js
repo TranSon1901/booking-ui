@@ -8,13 +8,14 @@ import UseFetch from "../../hooks/UseFetch"
 import { useLocation } from "react-router-dom"
 import Footer from "../../components/Footer/Footer"
 import { SearchContext } from "../../context/SearchContext"
+import Reserve from "../../components/reserve/Reserve"
 function Hotel(){
     const location = useLocation()
     const path= location.pathname.split("/")
     const id = path.splice(3).toString()
     const [sliderNumber,setSliderNumber]=useState()
     const [open,setOpen]=useState()
-    
+    const [openModal, setOpenModal] = useState(false);
     const {data, loading, erorr ,reFetch} = 
        UseFetch(`/hotels/find/${id}`)
     const handleOpen=(i)=>{
@@ -110,6 +111,7 @@ function Hotel(){
                          </div>
                     </div>
                     <Footer />
+                <Reserve setOpen={setOpenModal} hotelId={id}/>
                </div>
           </div>
           }
