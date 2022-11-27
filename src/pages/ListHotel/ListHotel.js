@@ -26,6 +26,12 @@ function ListHotel(){
         reFetch()
         dispatch({type:"NEW_SEARCH",payload:{destination,date,option}})
     }
+    const hanldeOption=(name,e)=>{
+        setOption(prev=>({
+            ...prev,
+            [name]: Number(e.target.value)
+        }))
+    }
     return(
       <div>
         <NavBar />
@@ -77,21 +83,27 @@ function ListHotel(){
                             <span className="ls_options_text">
                                 Adult 
                             </span>
-                            <input type="number" min={1} className="ls_option_input"
+                            <input type="number" min={1} 
+                            className="ls_option_input"
+                            onChange={(e)=>hanldeOption("adult",e)}
                             placeholder={option.adult}/>
                         </div>
                         <div className="ls_options_item">
                             <span className="ls_options_text">
                                 Children
                             </span>
-                            <input type="number" min={0} className="ls_option_input"
+                            <input type="number" min={0} 
+                            onChange={(e)=>hanldeOption("chilren",e)}
+                            className="ls_option_input"
                             placeholder={option.children}/>
                         </div>
                         <div className="ls_options_item">
                             <span className="ls_options_text">
                                 Room 
                             </span>
-                            <input type="number" min={1} className="ls_option_input"
+                            <input type="number" min={1} 
+                            onChange={(e)=>hanldeOption("room",e)}
+                            className="ls_option_input"
                             placeholder={option.room}/>
                         </div>
                     </div>
