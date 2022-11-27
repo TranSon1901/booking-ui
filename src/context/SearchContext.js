@@ -39,4 +39,4 @@ const SearchContextProvider=({children})=>{
         </SearchContext.Provider>
     )
 }
-export {SearchContext,SearchContextProvider}
+export {SearchContext, SearchContextProvider}

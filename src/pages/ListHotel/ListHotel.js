@@ -1,22 +1,24 @@
 import { useLocation } from "react-router-dom"
 import Header from "../../components/Header/Header"
 import NavBar from "../../components/navbar/Navbar"
-import { useState } from "react"
+import { useState,useContext } from "react"
 import { format } from 'date-fns'
 import { DateRange } from 'react-date-range';
 import './listhotel.css'
 import SearchItem from "../../components/searchItem/SearchItem"
 import UseFetch from "../../hooks/UseFetch"
+import { SearchContext } from "../../context/SearchContext"
 
 function ListHotel(){
     const localtion=useLocation()
     const [openDate,setOpenDate]=useState(false)
     const [destination,setDestinaton]=useState(localtion.state.destination)
-    const [date, setDate] = useState(localtion.state.date)
+    // const [dates, setDates] = useState(localtion.state.date)
     const [option,setOption]=useState(localtion.state.option)
     const [min,setMin]=useState(undefined)
     const [max,setMax]=useState(undefined)
-     
+
+    const {date,dispatch} =useContext(SearchContext)
     const {data, loading, erorr ,reFetch} = 
        UseFetch(`/hotels?city=${destination}&min=${min||0}&max=${max||999}`)
 
@@ -33,7 +35,9 @@ function ListHotel(){
                     <h1 className="ls_title">Search</h1>
                     <div className="ls_Item">
                         <label>Destination</label>
-                        <input type="text" value={destination}/>
+                        <input type="text" placeholder={destination}
+                        onChange={(e)=>setDestinaton(e.target.value)}
+                        />
                     </div>
                     <div className="ls_Item">
                         <label>Check-in date</label>
@@ -47,7 +51,7 @@ function ListHotel(){
                         editableDateInputs={true}
                         minDate={new Date()}
                         ranges={date}
-                        onChange={item => setDate([item.selection])}
+                        onChange={item => {}}
                         moveRangeOnFirstSelection={false}
                     />}
                     <div className="ls_Item">

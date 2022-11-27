@@ -19,7 +19,6 @@ function Hotel(){
     const {data, loading, erorr ,reFetch} = 
        UseFetch(`/hotels/find/${id}`)
     const handleOpen=(i)=>{
-       console.log(i)
         setSliderNumber(i)
         setOpen(true)
     }
@@ -34,7 +33,7 @@ function Hotel(){
         setSliderNumber(newSliderNumber)
       };
     const {date ,option} =useContext(SearchContext)
-
+    
     const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
     function dayDifference(date1, date2) {
       const timeDiff = Math.abs(date2.getTime() - date1.getTime());
@@ -99,7 +98,7 @@ function Hotel(){
                             </p>
                          </div>
                          <div className="hotel_details_Price">
-                              <h1>Perfect for a 9-night stay!</h1>
+                              <h1>Perfect for a {days} stay!</h1>
                               <span>
                                   Located in the real heart of Krakow, this property has an
                                   excellent location score of 9.8!
@@ -107,11 +106,14 @@ function Hotel(){
                               <h2>
                                 <b>${days*data.cheapestPrice*option.room}</b> ({days} nights)
                               </h2>
-                              <button>Reserve or Book Now!</button>
+                              <button onClick={()=>setOpenModal(true)}>Reserve or Book Now!</button>
                          </div>
                     </div>
                     <Footer />
-                <Reserve setOpen={setOpenModal} hotelId={id}/>
+               {
+                 openModal && 
+                 <Reserve setOpen={setOpenModal} hotelId={id}/>
+                } 
                </div>
           </div>
           }

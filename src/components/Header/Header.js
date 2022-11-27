@@ -43,6 +43,7 @@ function Header({type}){
       const {user} = useContext(AuthContext)
 
       const navigate = useNavigate();
+      
       const hanldeSearch=() =>{
         dispatch({type:"NEW_SEARCH",payload:{destination,date,option}})
         navigate("/booking-ui/hotels", { state: { destination, date, option } })

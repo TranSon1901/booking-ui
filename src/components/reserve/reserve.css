@@ -10,15 +10,16 @@
     justify-content: center;
 }  
 .reserve_container{
-    background-color: red;
+    background-color: white;
     padding: 20px;
     position: relative;
 }
 .reserve_Close{
     position: absolute;
-    top: 0;
-    right: 0;
+    top:   5px;
+    right: 5px;
     cursor: pointer;
+    font-size: 20px;
 }
 .reserve_item{
     display: flex;

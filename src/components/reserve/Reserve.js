@@ -13,7 +13,7 @@ function Reserve ({ setOpen, hotelId }){
     const { date } = useContext(SearchContext);
 
     const navigate = useNavigate();
-    console.log(date)
+
     const getDatesInRange = (startDate, endDate) => {
         const start = new Date(startDate);
         const end = new Date(endDate);
@@ -31,11 +31,18 @@ function Reserve ({ setOpen, hotelId }){
       };
     
     const alldates = getDatesInRange(date[0].startDate, date[0].endDate);
-    
-
+   
+    const isAvailable = (roomNumber) => {
+      const isFound = roomNumber.unavailableDates.some((date) =>
+        alldates.includes(new Date(date).getTime())
+      );
+      return !isFound;
+    };
+  
     const hanldeSelect=(e)=>{
         const checked = e.target.checked
         const value = e.target.value
+       
         setSelectedRooms(checked ? 
             [...selectedRooms,value]:
             selectedRooms.filter((item) => item !== value))
@@ -51,15 +58,16 @@ function Reserve ({ setOpen, hotelId }){
                 })
               );
               setOpen(false);
-              navigate("/");
+              navigate("/booking-ui/");
             } catch (err) {}
           };
     return(
         <div className='reserve'>
             <div className='reserve_container'>
             <FontAwesomeIcon
-             icon={faCircleXmark} onClick={setOpen(false)}
+             icon={faCircleXmark}
              className="reserve_Close"
+             onClick={()=>setOpen(false)}
              />
             <span>Select your rooms:</span>
             {
@@ -77,6 +85,7 @@ function Reserve ({ setOpen, hotelId }){
                                 <label>{roomNumber.number}</label>
                                 <input type="checkbox" value={roomNumber._id}
                                 onChange={hanldeSelect}
+                                disabled={!isAvailable(roomNumber)}
                                 />
                             </div>
                         ))
