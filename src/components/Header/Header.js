@@ -48,6 +48,7 @@ function Header({type}){
         dispatch({type:"NEW_SEARCH",payload:{destination,date,option}})
         navigate("/booking-ui/hotels", { state: { destination, date, option } })
       }
+     
     return(
         <div className="header">
             <div className={type==='listHotel'? "header_container listMode":"header_container"}>

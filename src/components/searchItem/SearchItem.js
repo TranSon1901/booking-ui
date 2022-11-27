@@ -1,6 +1,9 @@
 import './searchItem.css'
 import {Link} from 'react-router-dom'
-function SearchItem({item}){
+function SearchItem({item,dispatch,destination,option,date}){
+  const handleClick =()=>{
+    dispatch({type:"NEW_SEARCH",payload:{destination,date,option}})
+  }
     return(
     <div className="search_Item">
        <img src={item.photos[0]} />
@@ -28,7 +31,7 @@ function SearchItem({item}){
           <span className="search_Item_Price">{item.cheapestPrice}</span>
           <span className="search_Item_TaxOp">Includes taxes and fees</span>
           <Link to={`/booking-ui/hotels/${item._id}`}>
-              <button className="search_Item_CheckButton">See availability</button>   
+              <button onClick={handleClick} className="search_Item_CheckButton">See availability</button>   
           </Link>
         </div>
       </div>

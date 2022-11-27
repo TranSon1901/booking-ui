@@ -27,6 +27,7 @@ const SearchReducer= (state,action)=>{
 }
 const SearchContextProvider=({children})=>{
     const [state,dispatch]=useReducer(SearchReducer,INITIAL_STATE)
+    console.log(state)
     return(
         <SearchContext.Provider 
         value={{destination:state.destination,

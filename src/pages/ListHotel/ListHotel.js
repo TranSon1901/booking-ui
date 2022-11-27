@@ -13,17 +13,18 @@ function ListHotel(){
     const localtion=useLocation()
     const [openDate,setOpenDate]=useState(false)
     const [destination,setDestinaton]=useState(localtion.state.destination)
-    // const [dates, setDates] = useState(localtion.state.date)
+    const [date, setDates] = useState(localtion.state.date)
     const [option,setOption]=useState(localtion.state.option)
     const [min,setMin]=useState(undefined)
     const [max,setMax]=useState(undefined)
 
-    const {date,dispatch} =useContext(SearchContext)
+    const {dispatch} =useContext(SearchContext)
     const {data, loading, erorr ,reFetch} = 
        UseFetch(`/hotels?city=${destination}&min=${min||0}&max=${max||999}`)
 
     const hanldeSearch=()=>{
         reFetch()
+        dispatch({type:"NEW_SEARCH",payload:{destination,date,option}})
     }
     return(
       <div>
@@ -51,7 +52,7 @@ function ListHotel(){
                         editableDateInputs={true}
                         minDate={new Date()}
                         ranges={date}
-                        onChange={item => {}}
+                        onChange={item =>setDates([item.selection])}
                         moveRangeOnFirstSelection={false}
                     />}
                     <div className="ls_Item">
@@ -98,7 +99,13 @@ function ListHotel(){
                 </div>
                 <div className="listHotel_Result">
                    { loading ? ('loading await please'):
-                     data.map(item=>(<SearchItem item={item} key={item._id}/>))
+                     data.map(item=>(<SearchItem 
+                        item={item} 
+                        key={item._id} 
+                        dispatch={dispatch}
+                        destination={destination}
+                        option={option}
+                        date={date}/>))
                    }
                 </div>
             </div>
